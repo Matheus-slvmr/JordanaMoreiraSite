@@ -1,0 +1,240 @@
+/* ==========================================================================
+   Configurações rápidas
+   --screens : quantas "telas" de rolagem a animação ocupa (maior = mais lenta)
+   ========================================================================== */
+:root {
+  --bg: #F7F3EE;
+  --ink: #5F5246;
+  --taupe: #8A7968;
+  --line: #E9E0D5;
+  --light: #FBF8F4;
+
+  --screens: 6;
+
+  /* 100lvh = maior altura possível da janela no celular.
+     Evita que a barra do navegador cause "pulos" no canvas. */
+  --stage-h: 100vh;
+}
+
+@supports (height: 100lvh) {
+  :root { --stage-h: 100lvh; }
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* a suavização é feita no JS, não pelo navegador */
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Cena presa (sticky)
+   ========================================================================== */
+.scene {
+  position: relative;
+  height: calc(var(--stage-h) * var(--screens));
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--stage-h);
+  overflow: hidden;
+  background: var(--bg);
+  --progress: 0;
+}
+
+.stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Degradê inferior para dar leitura ao texto sobre qualquer imagem */
+.stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(47, 38, 30, 0.42), rgba(47, 38, 30, 0) 42%);
+}
+
+/* ==========================================================================
+   Texto de abertura (some conforme o usuário rola)
+   ========================================================================== */
+.intro {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 clamp(20px, 6vw, 72px) calc(clamp(28px, 6vh, 56px) + env(safe-area-inset-bottom, 0px));
+  color: var(--light);
+  pointer-events: none;
+  opacity: max(0, calc(1 - var(--progress, 0) * 10));
+}
+
+.intro__title {
+  margin: 0 0 1rem;
+  max-width: 16ch;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 6.5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 24px rgba(47, 38, 30, 0.35);
+}
+
+.intro__hint {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.intro__line {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background: currentColor;
+  transform-origin: top;
+  animation: hint 2.4s ease-in-out infinite;
+}
+
+@keyframes hint {
+  0%   { transform: scaleY(0); opacity: 0; }
+  40%  { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* ==========================================================================
+   Barra de progresso
+   ========================================================================== */
+.progress {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: rgba(247, 243, 238, 0.25);
+}
+
+.progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--light);
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
+}
+
+/* ==========================================================================
+   Tela de carregamento
+   ========================================================================== */
+.loader {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 24px;
+  background: var(--bg);
+  color: var(--taupe);
+  text-align: center;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader__label {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.loader__track {
+  width: min(240px, 60vw);
+  height: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.loader__track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--taupe);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.2s linear;
+}
+
+/* ==========================================================================
+   Conteúdo depois da animação
+   ========================================================================== */
+.content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(72px, 14vh, 160px) clamp(20px, 6vw, 72px);
+  background: var(--bg);
+}
+
+.content__inner {
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+.content h2 {
+  margin: 0 0 1rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  line-height: 1.15;
+}
+
+.content p { margin: 0; }
+
+/* ==========================================================================
+   Movimento reduzido: sem sticky, sem scrub, apenas um frame estático.
+   A classe .reduced-motion é aplicada pelo script.js.
+   ========================================================================== */
+.reduced-motion .scene { height: auto; }
+
+.reduced-motion .stage {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+}
+
+.reduced-motion .intro { opacity: 1; }
+.reduced-motion .intro__hint,
+.reduced-motion .progress { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,215 @@
+/* Estilos do restante do site. Carregado depois do styles.css (que cuida da animação). */
+:root {
+  --accent: #4E6A5F;      /* verde-sálvia profundo: botões e foco */
+  --accent-dark: #3E574D;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+html { scroll-padding-top: 76px; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- Cabeçalho ---------- */
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) clamp(20px, 6vw, 72px) 12px;
+  background: rgba(247, 243, 238, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+.header.is-scrolled { border-bottom-color: var(--line); }
+
+.brand {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.nav { display: flex; gap: 1.75rem; }
+.nav a { color: var(--ink); text-decoration: none; font-size: 0.95rem; }
+.nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Barra de progresso da animação desce para baixo do cabeçalho */
+.progress { top: calc(56px + env(safe-area-inset-top, 0px)); }
+
+.intro__sub {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  max-width: 28ch;
+  text-shadow: 0 1px 16px rgba(47, 38, 30, 0.4);
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn--small { padding: 0.55rem 1.2rem; font-size: 0.92rem; }
+.btn--light { background: var(--light); color: var(--ink); }
+.btn--light:hover { background: #fff; }
+
+/* ---------- Seções ---------- */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(72px, 12vh, 140px) clamp(20px, 6vw, 72px);
+  background: var(--bg);
+}
+.section--alt { background: var(--light); }
+.section--dark { background: var(--ink); color: var(--light); }
+
+.wrap { max-width: 1120px; margin: 0 auto; }
+.wrap--narrow { max-width: 760px; }
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(32px, 6vw, 88px);
+  align-items: start;
+}
+
+.h2 {
+  margin: 0 0 1.25rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.lead { margin: 0 0 2.5rem; max-width: 52ch; font-size: 1.1rem; color: var(--taupe); }
+.section p { max-width: 62ch; }
+.section p + p { margin-top: 1rem; }
+.small { font-size: 0.85rem; color: var(--taupe); margin: 1.25rem 0 1.75rem; }
+
+.photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 200px 200px 24px 24px;
+  background: linear-gradient(160deg, var(--line), #D9CDBF);
+}
+
+/* ---------- Tratamentos: lista com linhas divisórias ---------- */
+.treatments { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.treatments li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: 1rem 3rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.treatments h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 1.5rem; }
+.treatments p { margin: 0; }
+
+/* ---------- Etapas da consulta (sequência real) ---------- */
+.steps {
+  list-style: none;
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 2rem;
+}
+.steps li { counter-increment: step; padding-top: 1rem; border-top: 2px solid var(--accent); }
+.steps li::before {
+  content: counter(step);
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--accent);
+}
+.steps h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+.steps p { margin: 0; }
+
+/* ---------- Diferenciais ---------- */
+.checks { list-style: none; margin: 0; padding: 0; }
+.checks li { position: relative; padding: 0.9rem 0 0.9rem 2rem; border-bottom: 1px solid var(--line); }
+.checks li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 1.15rem;
+  width: 0.5rem;
+  height: 0.9rem;
+  border: solid var(--accent);
+  border-width: 0 2px 2px 0;
+  transform: rotate(40deg);
+}
+
+/* ---------- Perguntas frequentes ---------- */
+details { border-bottom: 1px solid var(--line); }
+details:first-of-type { border-top: 1px solid var(--line); }
+summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--accent); transition: transform 0.25s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin: 0 0 1.25rem; max-width: 60ch; }
+
+/* ---------- Contato ---------- */
+.section--dark p { color: rgba(251, 248, 244, 0.85); margin-bottom: 1.75rem; }
+.info { margin: 0; display: grid; grid-template-columns: 1fr; gap: 0.25rem; }
+.info dt { margin-top: 1rem; font-size: 0.9rem; color: rgba(251, 248, 244, 0.6); }
+.info dt:first-child { margin-top: 0; }
+.info dd { margin: 0; }
+.info a { color: inherit; text-underline-offset: 3px; }
+
+/* ---------- Rodapé e botão flutuante ---------- */
+.footer {
+  position: relative;
+  z-index: 1;
+  padding: 1.75rem clamp(20px, 6vw, 72px) calc(1.75rem + env(safe-area-inset-bottom, 0px));
+  background: #4D4137;
+  color: rgba(251, 248, 244, 0.7);
+  font-size: 0.85rem;
+  text-align: center;
+}
+.footer p { margin: 0; }
+
+.whats {
+  position: fixed;
+  z-index: 9;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  padding: 0.8rem 1.3rem;
+  border-radius: 999px;
+  background: #1F7A4D;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(31, 122, 77, 0.35);
+}
+.whats:hover { background: #196540; }
+
+/* ---------- Telas pequenas ---------- */
+@media (max-width: 720px) {
+  .nav { display: none; }
+  .treatments li { grid-template-columns: 1fr; gap: 0.4rem; }
+  .photo { max-width: 340px; }
+}

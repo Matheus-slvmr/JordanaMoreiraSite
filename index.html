@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jordana Moreira | Odontologia em Goiânia</title>
+  <meta name="description" content="Clínica odontológica em Goiânia: prevenção, clareamento, lentes, implantes e ortodontia, com atendimento sem pressa. Agende sua avaliação.">
+  <meta name="theme-color" content="#F7F3EE">
+
+  <!-- Começa a baixar o primeiro frame antes mesmo de o JavaScript rodar -->
+  <link rel="preload" as="image" href="frames/frame-0001.webp" type="image/webp">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <a class="brand" href="#topo">Jordana Moreira</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#consulta">A consulta</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a class="btn btn--small" href="#contato">Agendar</a>
+  </header>
+
+  <main id="topo">
+    <!-- .scene define o "comprimento" da rolagem; .stage fica presa na tela -->
+    <section class="scene" id="scene" aria-label="Animação controlada pela rolagem">
+      <div class="stage" id="stage">
+
+        <canvas id="canvas" role="img" aria-label="Sequência de imagens animada pela rolagem da página"></canvas>
+
+        <div class="intro">
+          <h1 class="intro__title">Jordana Moreira</h1>
+          <p class="intro__sub">Odontologia com tempo para ouvir você</p>
+          <p class="intro__hint"><span class="intro__line" aria-hidden="true"></span>Role para continuar</p>
+        </div>
+
+        <div class="progress" aria-hidden="true"><span></span></div>
+
+        <div class="loader" id="loader" role="status" aria-live="polite">
+          <p class="loader__label" id="loaderLabel">Carregando 0%</p>
+          <div class="loader__track"><span id="loaderBar"></span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section" id="sobre">
+      <div class="wrap split">
+        <div>
+          <h2 class="h2">Cuidar do sorriso é cuidar da sua saúde</h2>
+          <p>Sou a Dra. Jordana Moreira, cirurgiã-dentista. Atendo em Goiânia com uma regra simples: você entende cada etapa antes de qualquer procedimento começar.</p>
+          <p>Meu trabalho combina prevenção, estética e reabilitação, sempre com o tratamento mais conservador que resolve o seu caso.</p>
+          <p class="small">CRO-GO 00000 · substitua pelo seu registro</p>
+          <a class="btn" href="#contato">Agendar avaliação</a>
+        </div>
+
+        <img class="photo" src="photo/image.png" alt="Dra. Jordana Moreira">
+      
+      </div>
+
+    </section>
+
+    <!-- Tratamentos -->
+    <section class="section section--alt" id="tratamentos">
+      <div class="wrap">
+        <h2 class="h2">Tratamentos</h2>
+        <p class="lead">Do check-up de rotina à reabilitação completa.</p>
+        <ul class="treatments">
+          <li><h3>Limpeza e prevenção</h3><p>Remoção de tártaro, controle da gengiva e orientação de higiene para evitar cáries e sangramentos.</p></li>
+          <li><h3>Clareamento dental</h3><p>Em consultório ou com moldeira caseira, com acompanhamento para proteger o esmalte e reduzir a sensibilidade.</p></li>
+          <li><h3>Lentes de contato dental</h3><p>Lâminas finas de porcelana ou resina para alinhar, uniformizar e renovar a aparência dos dentes.</p></li>
+          <li><h3>Implantes</h3><p>Reposição de dentes perdidos com planejamento digital e foco em função, conforto e naturalidade.</p></li>
+          <li><h3>Ortodontia</h3><p>Aparelhos fixos e alinhadores transparentes para corrigir posição dos dentes e mordida.</p></li>
+          <li><h3>Odontopediatria</h3><p>Atendimento calmo para crianças, com a primeira visita pensada para criar confiança.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Como é a consulta -->
+    <section class="section" id="consulta">
+      <div class="wrap">
+        <h2 class="h2">Como é a primeira consulta</h2>
+        <p class="lead">Sem surpresas: você sabe o que vai acontecer em cada etapa.</p>
+        <ol class="steps">
+          <li><h3>Conversa</h3><p>Você conta o que incomoda, o que deseja e seu histórico de saúde.</p></li>
+          <li><h3>Exame</h3><p>Avaliação clínica completa e, quando necessário, radiografias.</p></li>
+          <li><h3>Plano</h3><p>Explico as opções, prazos e valores. A decisão é sua, sem pressa.</p></li>
+          <li><h3>Cuidado contínuo</h3><p>Retornos combinados para acompanhar o resultado e manter o sorriso.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="section section--alt" id="diferenciais">
+      <div class="wrap split">
+        <div>
+          <h2 class="h2">O que você encontra aqui</h2>
+        </div>
+        <ul class="checks">
+          <li>Horário reservado só para você, sem sala de espera cheia</li>
+          <li>Explicação clara do diagnóstico, com imagens quando ajudam</li>
+          <li>Prioridade para tratamentos que preservam o dente natural</li>
+          <li>Orçamento por escrito antes de começar</li>
+          <li>Biossegurança rigorosa e materiais esterilizados</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Dúvidas -->
+    <section class="section" id="duvidas">
+      <div class="wrap wrap--narrow">
+        <h2 class="h2">Dúvidas frequentes</h2>
+        <details>
+          <summary>Preciso estar com dor para marcar consulta?</summary>
+          <p>Não. A avaliação preventiva é justamente para descobrir problemas cedo, quando o tratamento é mais simples.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo dura a primeira consulta?</summary>
+          <p>Em geral entre 40 e 60 minutos, o suficiente para conversar, examinar e montar um plano.</p>
+        </details>
+        <details>
+          <summary>O clareamento estraga o esmalte?</summary>
+          <p>Quando indicado e acompanhado por dentista, é seguro. Antes de começar, avalio se o seu caso permite.</p>
+        </details>
+        <details>
+          <summary>Vocês atendem crianças?</summary>
+          <p>Sim. A primeira visita é curta e tranquila, para a criança conhecer o consultório sem medo.</p>
+        </details>
+        <details>
+          <summary>Quais formas de pagamento?</summary>
+          <p>Consulte pelo WhatsApp as condições atuais de pagamento e parcelamento.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="section section--dark" id="contato">
+      <div class="wrap split">
+        <div>
+          <h2 class="h2">Agende sua avaliação</h2>
+          <p>Fale com a clínica pelo WhatsApp e escolha o melhor horário.</p>
+          <a class="btn btn--light" href="https://wa.me/5562900000000?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        </div>
+        <dl class="info">
+          <dt>Endereço</dt>
+          <dd>Rua Exemplo, 000, Setor Bueno<br>Goiânia, GO</dd>
+          <dt>Horário</dt>
+          <dd>Segunda a sexta, 8h às 18h<br>Sábado, 8h às 12h</dd>
+          <dt>Contato</dt>
+          <dd><a href="tel:+5562900000000">(62) 90000-0000</a><br><a href="mailto:contato@exemplo.com.br">contato@exemplo.com.br</a></dd>
+          <dt>Instagram</dt>
+          <dd><a href="https://instagram.com/" target="_blank" rel="noopener">@jordanamoreira</a></dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2026</span> Jordana Moreira · Cirurgiã-dentista · CRO-GO 00000</p>
+  </footer>
+
+  <a class="whats" href="https://wa.me/5562900000000" target="_blank" rel="noopener">WhatsApp</a>
+
+  <noscript>
+    <style>.loader{display:none}</style>
+  </noscript>
+
+  <script src="script.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>
