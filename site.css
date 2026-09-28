@@ -98,12 +98,13 @@ html { scroll-padding-top: 76px; }
 .small { font-size: 0.85rem; color: var(--taupe); margin: 1.25rem 0 1.75rem; }
 
 .photo {
-  display: block;
-  width: 100%;
+  display: grid;
+  place-items: center;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
   border-radius: 200px 200px 24px 24px;
   background: linear-gradient(160deg, var(--line), #D9CDBF);
+  color: var(--taupe);
+  font-size: 0.95rem;
 }
 
 /* ---------- Tratamentos: lista com linhas divisórias ---------- */
@@ -206,6 +207,9 @@ details p { margin: 0 0 1.25rem; max-width: 60ch; }
   box-shadow: 0 6px 20px rgba(31, 122, 77, 0.35);
 }
 .whats:hover { background: #196540; }
+
+/* ---------- Sem tela de carregamento: some direto, sem mostrar % ---------- */
+.loader { display: none !important; }
 
 /* ---------- Telas pequenas ---------- */
 @media (max-width: 720px) {
